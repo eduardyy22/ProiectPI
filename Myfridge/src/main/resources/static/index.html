@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+      <link rel="stylesheet" href="styles/style.css">
+      <title>LoginPage</title>
+</head>
+<body>
+      <div class="container" id="container">
+            <div class="form-container sign-up">
+                  <form>
+                        <h1>Create Account</h1>
+                        <div class="social-icons">
+
+                        </div>
+                        <span>or use your email for registeration</span>
+                        <input type="text" placeholder="Firstname">
+                        <input type="text" placeholder="Lastname">
+                        <input type="email" placeholder="Email"> 
+                        <input type="password" placeholder="Password"> 
+                        <button id="signupButton">Sign up</button>
+                  </form>
+            </div>
+            <div class="form-container sign-in">
+                  <form>
+                        <h1>Sign In</h1>
+                        <span>or use your email and password</span>
+                        <input type="email" placeholder="Email"> 
+                        <input type="password" placeholder="Password">
+                        <a href="#"> Forgot Your Passoword?</a>
+                        <button id="signinButton">Sign in</button>
+                  </form>
+            </div>
+            <div class="toggle-container">
+                  <div class="toggle">
+                        <div class="toggle-panel toggle-left">
+                              <h1>Welcome to MYFridge!</h1>
+                              <p>Enter your personal...</p>
+                              <button class="hidden" id="login">Log in</button>
+                        </div>
+                        <div class="toggle-panel toggle-right">
+                              <h1>Welcome to MYFridge!</h1>
+                              <p>Register with your personal...</p>
+                              <button class="hidden" id="register">Sign up</button>
+                        </div>
+                  </div>
+            </div>
+      </div>
+      <script src="script.js"></script>
+</body>
+</html>
