@@ -3,6 +3,8 @@ package com.backapi.Myfridge.user;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,8 +34,9 @@ public class UserController {
 	}
 	
 	@PostMapping("/{email}/adauga")
-	public void adaugaAliment(@RequestBody AlimentRequest alimentRequest) {
-		alimentService.adaugaAliment(alimentRequest);
+	public ResponseEntity<Integer> adaugaAliment(@RequestBody AlimentRequest alimentRequest) {
+		Integer addedID = alimentService.adaugaAliment(alimentRequest);
+		return new ResponseEntity<>(addedID, HttpStatus.OK);
 	}
 	
 	@PutMapping("/{email}/update")
@@ -42,7 +45,7 @@ public class UserController {
 	}
 	
 	@DeleteMapping("/{email}/sterge/{id}")
-	public void stergeAliment(@PathVariable String email,@PathVariable Integer id ) {
+	public void stergeAliment(@PathVariable String email,@PathVariable String id ) {
 		alimentService.stergeAliment(email, id);
 	}
 }

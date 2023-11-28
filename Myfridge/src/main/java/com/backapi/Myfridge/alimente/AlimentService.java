@@ -36,7 +36,7 @@ public class AlimentService {
     }
 	
 	@Transactional
-	public void adaugaAliment(AlimentRequest alimentRequest)
+	public Integer adaugaAliment(AlimentRequest alimentRequest)
 	{
 		String tableName = alimentRequest.getEmail().replaceAll("[^a-zA-Z0-9]", "_");
 		entityManager.createNativeQuery("INSERT INTO " + tableName +
@@ -45,6 +45,9 @@ public class AlimentService {
 		.setParameter(2, alimentRequest.getExpirationDate())
 		.setParameter(3, alimentRequest.getUnitateMasura())
 		.setParameter(4, alimentRequest.getCantitate()).executeUpdate();
+		
+		return (Integer)entityManager.createNativeQuery("SELECT MAX(id) FROM " + tableName).getSingleResult();
+		
 	}
 	
 	@Transactional
@@ -68,11 +71,11 @@ public class AlimentService {
 	}
 	
 	@Transactional
-	public void stergeAliment(String userEmail, Integer id) {
+	public void stergeAliment(String userEmail, String id) {
 		try {
 	        String tableName = userEmail.replaceAll("[^a-zA-Z0-9]", "_");
 	        entityManager.createNativeQuery("DELETE FROM " + tableName + " WHERE id = ?")
-	            .setParameter(1, id)
+	            .setParameter(1, Integer.parseInt(id))
 	            .executeUpdate();
 	    } catch (Exception e) {
 	        e.printStackTrace();
